@@ -1,4 +1,5 @@
 ﻿#include "MyArray.h"
+#include "Point.h"
 
 int main()
 {
@@ -68,7 +69,11 @@ int main()
     arrInt2.Add(80);
     arrInt2.PrintDev();
 
-    cout << "\nArr1: Append(Arr2):";
+    cout << "\nArr1: Sum(): " << arrInt.Sum();
+
+    cout << "\nArr2: Sum(): " << arrInt2.Sum();
+
+    cout << "\n\nArr1: Append(Arr2):";
     arrInt.Append(arrInt2);
     arrInt.PrintDev();
 
@@ -102,4 +107,60 @@ int main()
     arrInt.PrintDev();
 
     delete[] ar;
+
+    cout << "\n---------------------------\n\n";
+
+    MyArray<double> arrDouble(4);
+    MyArray<char> arrChar(6);
+    MyArray<Point<int>> arrPointInt(3);
+    MyArray<Point<double>> arrPointDouble(5);
+    MyArray<Point<char>> arrPointChar(4);
+    MyArray<Point<Point<int>>> arrPointPointInt(2);
+
+    arrDouble.Input();
+    cout << "Arr Double: ";
+    arrDouble.Add(2.3);
+    arrDouble.PrintDev();
+
+    arrChar.Input();
+    cout << "Arr Char: ";
+    arrChar.PrintDev();
+
+    arrPointInt.Input();
+    cout << "Arr Point<int>: ";
+    arrPointInt.PrintDev();
+
+    arrPointDouble.Input();
+    cout << "Arr Point<double>: ";
+    arrPointDouble.PrintDev();
+    
+    arrPointChar.Input();
+    cout << "Arr Point<char>: ";
+    arrPointChar.PrintDev();
+
+    for (int i = 0; i < arrPointPointInt.GetSize(); i++)
+    {
+        arrPointPointInt[i] = Point<Point<int>>(
+            Point<int>(
+                rand() % 100,
+                rand() % 100,
+                rand() % 100),
+            Point<int>(
+                rand() % 100,
+                rand() % 100,
+                rand() % 100),
+            Point<int>(
+                rand() % 100,
+                rand() % 100,
+                rand() % 100));
+    }
+    cout << "Arr Point<Point<int>>: ";
+    arrPointPointInt.PrintDev();
+
+    cout << "\nArr Double: Sum(): " << arrDouble.Sum();
+    cout << "\nArr Char: Sum(): " << arrChar.Sum() << " (" << (int)arrChar.Sum() << ")";
+    cout << "\nArr Point<int>: Sum(): " << arrPointInt.Sum();
+    cout << "\nArr Point<double>: Sum(): " << arrPointDouble.Sum();
+    cout << "\nArr Point<char>: Sum(): " << arrPointChar.Sum();
+    cout << "\nArr Point<Point<int>>: Sum(): " << arrPointPointInt.Sum() << "\n";
 }

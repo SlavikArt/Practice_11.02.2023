@@ -25,6 +25,7 @@ public:
 	T GetAt(int index)const;
 	void SetAt(T el, int index);
 	void Add(T el);
+	T Sum();
 	void Append(const MyArray<T>& right);
 	T* GetData()const;
 	void InsertAt(T el, int pos);
@@ -222,6 +223,15 @@ void MyArray<T>::Add(T el)
 			extra--;
 		}
 	}
+}
+
+template<class T>
+T MyArray<T>::Sum()
+{
+	T tmp{};
+	for (int i = 0; i < count; i++)
+		tmp += arr[i];
+	return tmp;
 }
 
 template<class T>
