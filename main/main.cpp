@@ -171,5 +171,10 @@ int main()
     MyArray<int> arr{ 1, 10, 12, 30, -56, 32, 90 };
     arr.PrintDev();
     
+    cout << "MyArray<Point<int>> arr2{ {1, 6, 8}, {3, 9, 12} };\n";
+
+    MyArray<Point<int>> arr2{ {1, 6, 8}, {3, 9, 12} };
+    arr2.PrintDev();
+
     cout << "\n";
 }
