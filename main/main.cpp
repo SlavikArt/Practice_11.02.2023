@@ -163,4 +163,13 @@ int main()
     cout << "\nArr Point<double>: Sum(): " << arrPointDouble.Sum();
     cout << "\nArr Point<char>: Sum(): " << arrPointChar.Sum();
     cout << "\nArr Point<Point<int>>: Sum(): " << arrPointPointInt.Sum() << "\n";
+
+    cout << "\n---------------------------\n\n";
+
+    cout << "MyArray<int> arr{ 1, 10, 12, 30, -56, 32, 90 };\n";
+
+    MyArray<int> arr{ 1, 10, 12, 30, -56, 32, 90 };
+    arr.PrintDev();
+    
+    cout << "\n";
 }

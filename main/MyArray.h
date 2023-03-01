@@ -13,6 +13,7 @@ public:
 	MyArray();
 	MyArray(int size);
 	MyArray(const MyArray<T>& ar);
+	MyArray(const initializer_list<T>& list);
 
 	void Input();
 	void Print();
@@ -80,6 +81,18 @@ MyArray<T>::MyArray(const MyArray<T>& obj)
 	for (int i = count; i < count + extra; i++)
 	{
 		arr[i] = 0;
+	}
+}
+
+template<class T>
+MyArray<T>::MyArray(const initializer_list<T>& list) :
+	MyArray(list.size())
+{
+	int i = 0;
+	for (auto element : list)
+	{
+		arr[i] = element;
+		i++;
 	}
 }
 
