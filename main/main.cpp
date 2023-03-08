@@ -1,6 +1,8 @@
 ﻿#include "MyArray.h"
 #include "Point.h"
 
+string Beautify(string str, bool saveBeginTab);
+
 int main()
 {
     srand(time(0));
@@ -177,4 +179,74 @@ int main()
     arr2.PrintDev();
 
     cout << "\n";
+
+    string helloAlex = "     Hello   Alex!  How  are     you    doing?          ";
+
+    cout << helloAlex << "\n";
+
+    cout << "\n" << Beautify(helloAlex, true) << "\n\n";
+
+    cout << "begin->(" << helloAlex << ")<-end of string\n";
+
+    cout << "\nbegin->(" << Beautify(helloAlex, true) << ")<-end of string\n";
+}
+
+string Beautify(string str, bool saveBeginTab = false)
+{
+    const int SIZE = str.size();
+
+    int beg = 0;
+    while (str[beg] == ' ')
+        beg++;
+
+    if (beg == SIZE)
+        return str;
+
+    int end = SIZE - 1;
+    while (str[end] == ' ')
+        end--;
+
+    string tmp(SIZE, ' ');
+
+    int k = 0;
+    for (int i = beg; i <= end; )
+    {
+        while (str[i] != ' ')
+        {
+            tmp[k] = str[i];
+            k++;
+            i++;
+        }
+        if (str[i] == ' ')
+        {
+            tmp[k] = str[i];
+            k++;
+            i++;
+        }
+        while (str[i] == ' ')
+        {
+            i++;
+        }
+    }
+
+    if (!saveBeginTab)
+    {
+        string tmp2(k - 1, ' ');
+
+        for (int i = 0; i < k; i++)
+            tmp2[i] = tmp[i];
+        return tmp2;
+    }
+    else
+    {
+        string tmp2(beg + k - 1, ' ');
+
+        for (int i = 0; i < beg; i++)
+        {
+            tmp2[i] = ' ';
+        }
+        for (int i = beg, j = 0; i < k + beg - 1; i++, j++)
+            tmp2[i] = tmp[j];
+        return tmp2;
+    }
 }
